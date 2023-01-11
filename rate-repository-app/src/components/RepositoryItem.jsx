@@ -1,4 +1,5 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import Text from './Text'
 
 const RepositoryItem = ({ item }) => {
   return (
@@ -13,17 +14,5 @@ const RepositoryItem = ({ item }) => {
     </View>
   )
 }
-
-/*
- id: 'django.django',
-    fullName: 'django/django',
-    description: 'The Web framework for perfectionists with deadlines.',
-    language: 'Python',
-    forksCount: 21015,
-    stargazersCount: 48496,
-    ratingAverage: 73,
-    reviewCount: 5,
-    ownerAvatarUrl: 'https://avatars2.githubusercontent.com/u/27804?v=4',
-*/
 
 export default RepositoryItem
