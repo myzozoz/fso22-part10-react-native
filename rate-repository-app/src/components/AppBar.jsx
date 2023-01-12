@@ -6,7 +6,7 @@ import Text from './Text'
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.appBar,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',

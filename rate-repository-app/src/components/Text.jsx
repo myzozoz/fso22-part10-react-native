@@ -25,9 +25,20 @@ const styles = StyleSheet.create({
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
   },
+  center: {
+    textAlign: 'center',
+  },
 })
 
-const Text = ({ title, color, fontSize, fontWeight, style, ...props }) => {
+const Text = ({
+  title,
+  color,
+  fontSize,
+  fontWeight,
+  center,
+  style,
+  ...props
+}) => {
   const textStyle = [
     styles.text,
     title && styles.title,
@@ -35,6 +46,7 @@ const Text = ({ title, color, fontSize, fontWeight, style, ...props }) => {
     color === 'primary' && styles.colorPrimary,
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
+    center && styles.center,
     style,
   ]
   return <NativeText style={textStyle} {...props} />
