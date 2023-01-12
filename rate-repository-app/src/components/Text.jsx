@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     color: theme.colors.primary,
   },
   title: {
-    fontSize: theme.fontSizes.title,
+    fontSize: theme.fontSizes.subheading,
     color: theme.colors.textTitle,
   },
   fontSizeSubheading: {

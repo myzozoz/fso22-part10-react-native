@@ -1,7 +1,7 @@
-import { View, StyleSheet, Pressable } from 'react-native'
-import theme from '../theme'
+import { View, StyleSheet } from 'react-native'
 import Constants from 'expo-constants'
-import Text from './Text'
+import NavTab from './NavTab'
+import theme from '../theme'
 
 const styles = StyleSheet.create({
   container: {
@@ -10,20 +10,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    // ...
   },
-  navLabel: {
-    padding: 10,
-  },
-  // ...
 })
 
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => console.log('Pressed')} style={styles.navLabel}>
-        <Text title>Repositories</Text>
-      </Pressable>
+      <NavTab to={'/'} label={'Repositories'} />
+      <NavTab to={'/signin'} label={'Sign in'} />
     </View>
   )
 }
