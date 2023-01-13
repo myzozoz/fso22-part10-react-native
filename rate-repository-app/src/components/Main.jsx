@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     backgroundColor: theme.colors.backgroundGrey,
+    fontFamily: theme.fonts.main,
   },
 })
 
