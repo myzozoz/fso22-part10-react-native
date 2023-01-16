@@ -27,20 +27,7 @@ const Separator = () => {
 
 const initialValues = { username: '', password: '' }
 
-const SignIn = () => {
-  const [signIn] = useSignIn()
-  const navigate = useNavigate()
-
-  const onSubmit = async (values) => {
-    const { username, password } = values
-    try {
-      const { data } = await signIn({ username, password })
-      console.log(data)
-      navigate('/')
-    } catch (e) {
-      console.log(e)
-    }
-  }
+export const SignInContainer = ({ onSubmit }) => {
   return (
     <Formik
       initialValues={initialValues}
@@ -62,6 +49,23 @@ const SignIn = () => {
       )}
     </Formik>
   )
+}
+
+const SignIn = () => {
+  const [signIn] = useSignIn()
+  const navigate = useNavigate()
+
+  const onSubmit = async (values) => {
+    const { username, password } = values
+    try {
+      const { data } = await signIn({ username, password })
+      console.log(data)
+      navigate('/')
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  return <SignInContainer onSubmit={onSubmit} />
 }
 
 export default SignIn
