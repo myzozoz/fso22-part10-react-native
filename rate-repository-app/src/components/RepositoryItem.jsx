@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.itemCard}>
+    <View testID="repositoryItem" style={styles.itemCard}>
       <View style={styles.infoRow}>
         <Image style={styles.image} source={{ uri: item.ownerAvatarUrl }} />
         <View style={styles.infoColumn}>
