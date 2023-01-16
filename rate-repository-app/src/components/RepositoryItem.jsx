@@ -1,4 +1,6 @@
 import { Image, View, StyleSheet } from 'react-native'
+import * as Linking from 'expo-linking'
+import Button from './Button'
 import Text from './Text'
 import LanguageLabel from './LanguageLabel'
 import StatLabel from './StatLabel'
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, full }) => {
   return (
     <View testID="repositoryItem" style={styles.itemCard}>
       <View style={styles.infoRow}>
@@ -70,6 +72,16 @@ const RepositoryItem = ({ item }) => {
         <StatLabel count={item.reviewCount} label={'Reviews'}></StatLabel>
         <StatLabel count={item.ratingAverage} label={'Rating'}></StatLabel>
       </View>
+      {full && (
+        <View>
+          <Button
+            onSubmit={() => {
+              Linking.openURL(item.url)
+            }}
+            label={'Open in GitHub'}
+          />
+        </View>
+      )}
     </View>
   )
 }

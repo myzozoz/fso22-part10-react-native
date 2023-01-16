@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const SubmitButton = ({ onSubmit, label }) => {
+const Button = ({ onSubmit, label }) => {
   return (
     <Pressable onPress={onSubmit}>
       <Text fontWeight={'bold'} style={styles.button}>
@@ -22,4 +22,4 @@ const SubmitButton = ({ onSubmit, label }) => {
   )
 }
 
-export default SubmitButton
+export default Button

@@ -4,7 +4,7 @@ import { Formik } from 'formik'
 import * as yup from 'yup'
 import useSignIn from '../hooks/useSignIn'
 import FormikTextInput from './FormikTextInput'
-import SubmitButton from './SubmitButton'
+import Button from './Button'
 
 const styles = StyleSheet.create({
   container: {
@@ -44,7 +44,7 @@ export const SignInContainer = ({ onSubmit }) => {
             secureTextEntry
           />
           <Separator />
-          <SubmitButton onSubmit={handleSubmit} label={'Sign in'} />
+          <Button onSubmit={handleSubmit} label={'Sign in'} />
         </View>
       )}
     </Formik>
