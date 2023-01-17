@@ -1,19 +1,34 @@
 import { useParams } from 'react-router-native'
-import { useQuery } from '@apollo/client'
+import { FlatList, StyleSheet, View } from 'react-native'
+import useRepository from '../hooks/useRepository'
 import RepositoryItem from './RepositoryItem'
-import { GET_REPOSITORY } from '../graphql/queries'
+import ReviewItem from './ReviewItem'
 import Text from './Text'
+
+const styles = StyleSheet.create({
+  separator: {
+    height: 10,
+  },
+})
+
+const ItemSeparator = () => <View style={styles.separator} />
 
 const RepositoryPage = () => {
   const { id } = useParams()
-  const { loading, data } = useQuery(GET_REPOSITORY, {
-    variables: { id },
-  })
-  console.log('repository page rendered', id)
+  const { repository, loading } = useRepository(id)
   if (loading) return <Text>loading...</Text>
 
-  console.log('data', data)
-  return <RepositoryItem item={data?.repository} full />
+  const reviews = repository?.reviews.edges.map((e) => e.node)
+
+  return (
+    <FlatList
+      data={reviews}
+      renderItem={({ item }) => <ReviewItem review={item} />}
+      keyExtractor={({ id }) => id}
+      ListHeaderComponent={() => <RepositoryItem item={repository} full />}
+      ItemSeparatorComponent={ItemSeparator}
+    />
+  )
 }
 
 export default RepositoryPage
