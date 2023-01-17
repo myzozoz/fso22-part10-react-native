@@ -33,6 +33,9 @@ const AppBar = () => {
     <View style={styles.container}>
       <ScrollView horizontal>
         <NavTab to={'/'} label={'Repositories'} />
+        {!loading && data.me && (
+          <NavTab to={'/review'} label={'Write review'} />
+        )}
         {!loading && !data.me ? (
           <NavTab to={'/signin'} label={'Sign in'} />
         ) : (
