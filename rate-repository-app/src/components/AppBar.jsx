@@ -33,13 +33,17 @@ const AppBar = () => {
     <View style={styles.container}>
       <ScrollView horizontal>
         <NavTab to={'/'} label={'Repositories'} />
-        {!loading && data.me && (
-          <NavTab to={'/review'} label={'Write review'} />
-        )}
+
         {!loading && !data.me ? (
-          <NavTab to={'/signin'} label={'Sign in'} />
+          <>
+            <NavTab to={'/signin'} label={'Sign in'} />
+            <NavTab to={'/signup'} label={'Sign up'} />
+          </>
         ) : (
-          <NavTab to={'/'} label={'Sign out'} callBack={signOut} />
+          <>
+            <NavTab to={'/review'} label={'Write review'} />
+            <NavTab to={'/'} label={'Sign out'} callBack={signOut} />
+          </>
         )}
       </ScrollView>
     </View>
