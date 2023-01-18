@@ -4,12 +4,12 @@ import Button from './Button'
 import Text from './Text'
 import LanguageLabel from './LanguageLabel'
 import StatLabel from './StatLabel'
-import theme from '../theme'
 
 const styles = StyleSheet.create({
   itemCard: {
-    shadowColor: theme.colors.primary,
-    shadowRadius: 10,
+    shadowColor: 'black',
+    shadowRadius: 5,
+    shadowOpacity: 0.2,
     padding: 10,
     backgroundColor: 'white',
   },
