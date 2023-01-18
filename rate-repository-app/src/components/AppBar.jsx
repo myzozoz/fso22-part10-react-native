@@ -1,10 +1,10 @@
 import { View, StyleSheet, ScrollView } from 'react-native'
 import Constants from 'expo-constants'
-import { useQuery, useApolloClient } from '@apollo/client'
+import { useApolloClient } from '@apollo/client'
 import useAuthStorage from '../hooks/useAuthStorage'
-import { ME } from '../graphql/queries'
 import NavTab from './NavTab'
 import theme from '../theme'
+import useUser from '../hooks/useUser'
 
 const styles = StyleSheet.create({
   container: {
@@ -17,11 +17,11 @@ const styles = StyleSheet.create({
 })
 
 const AppBar = () => {
-  const { loading, data } = useQuery(ME)
+  const { loading, me } = useUser()
   const authStorage = useAuthStorage()
   const apolloClient = useApolloClient()
 
-  if (!loading) console.log('me', data.me)
+  if (!loading) console.log('me', me)
 
   const signOut = () => {
     console.log('signing out...')
@@ -34,7 +34,7 @@ const AppBar = () => {
       <ScrollView horizontal>
         <NavTab to={'/'} label={'Repositories'} />
 
-        {!loading && !data.me ? (
+        {!loading && !me ? (
           <>
             <NavTab to={'/signin'} label={'Sign in'} />
             <NavTab to={'/signup'} label={'Sign up'} />
@@ -42,6 +42,7 @@ const AppBar = () => {
         ) : (
           <>
             <NavTab to={'/review'} label={'Write review'} />
+            <NavTab to={'/myReviews'} label={'My reviews'} />
             <NavTab to={'/'} label={'Sign out'} callBack={signOut} />
           </>
         )}
