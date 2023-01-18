@@ -3,7 +3,7 @@ import { ME } from '../graphql/queries'
 
 const useUser = (variables) => {
   console.log('useUser variables', variables)
-  const { loading, data, fetchMore, ...result } = useQuery(ME, {
+  const { loading, data, fetchMore, refetch, ...result } = useQuery(ME, {
     fetchPolicy: 'cache-and-network',
     variables,
   })
@@ -28,6 +28,7 @@ const useUser = (variables) => {
     me: res,
     fetchMoreReviews: handleFetchMoreReviews,
     loading,
+    refetch,
     ...result,
   }
 }

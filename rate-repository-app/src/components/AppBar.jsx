@@ -2,6 +2,7 @@ import { View, StyleSheet, ScrollView } from 'react-native'
 import Constants from 'expo-constants'
 import { useApolloClient } from '@apollo/client'
 import useAuthStorage from '../hooks/useAuthStorage'
+import { useNavigate } from 'react-router-native'
 import NavTab from './NavTab'
 import theme from '../theme'
 import useUser from '../hooks/useUser'
@@ -20,6 +21,7 @@ const AppBar = () => {
   const { loading, me } = useUser()
   const authStorage = useAuthStorage()
   const apolloClient = useApolloClient()
+  const navigate = useNavigate()
 
   if (!loading) console.log('me', me)
 
@@ -27,6 +29,7 @@ const AppBar = () => {
     console.log('signing out...')
     authStorage.removeAccessToken()
     apolloClient.resetStore()
+    navigate('/')
   }
 
   return (

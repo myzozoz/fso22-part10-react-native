@@ -70,6 +70,9 @@ export const ME = gql`
         edges {
           node {
             ...ReviewDetails
+            repository {
+              fullName
+            }
           }
           cursor
         }

@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />
 
 const UserReviews = () => {
-  const { me, loading, fetchMoreReviews } = useUser({
+  const { me, loading, fetchMoreReviews, refetch } = useUser({
     includeReviews: true,
-    reviewsFirst: 1,
+    reviewsFirst: 10,
   })
   if (loading) return <Text>loading...</Text>
 
@@ -30,7 +30,9 @@ const UserReviews = () => {
   return (
     <FlatList
       data={reviewNodes}
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      renderItem={({ item }) => (
+        <ReviewItem review={item} refetch={refetch} userReviewsView />
+      )}
       keyExtractor={({ id }) => id}
       ItemSeparatorComponent={ItemSeparator}
       onEndReached={onEndReach}

@@ -12,10 +12,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const Button = ({ onSubmit, label }) => {
+const Button = ({ onSubmit, label, style }) => {
   return (
     <Pressable onPress={onSubmit}>
-      <Text fontWeight={'bold'} style={styles.button}>
+      <Text fontWeight={'bold'} style={[styles.button, style]}>
         {label}
       </Text>
     </Pressable>
