@@ -15,8 +15,16 @@ const ItemSeparator = () => <View style={styles.separator} />
 
 const RepositoryPage = () => {
   const { id } = useParams()
-  const { repository, loading } = useRepository(id)
+  const { repository, loading, fetchMoreReviews } = useRepository({
+    id,
+    reviewsFirst: 7,
+  })
   if (loading) return <Text>loading...</Text>
+
+  const onEndReach = () => {
+    console.log('Fetching more reviews...')
+    fetchMoreReviews()
+  }
 
   const reviews = repository?.reviews.edges.map((e) => e.node)
 
@@ -27,6 +35,8 @@ const RepositoryPage = () => {
       keyExtractor={({ id }) => id}
       ListHeaderComponent={() => <RepositoryItem item={repository} full />}
       ItemSeparatorComponent={ItemSeparator}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   )
 }
